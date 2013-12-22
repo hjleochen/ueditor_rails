@@ -143,7 +143,8 @@
      * 其中有一个特殊的保留key值为action，若设置，可以更改本次提交的处理地址
      */
     var postParams = {
-      "<%= request_forgery_protection_token %>": "<%= form_authenticity_token %>",
+      "<%= key = Rails.application.config.session_options[:key] %>" : "<%= cookies[key] %>",
+      "<%= request_forgery_protection_token %>" : "<%= form_authenticity_token %>"
     };
     wordImage.setPostParams(postParams);
     flashObj.upload();
